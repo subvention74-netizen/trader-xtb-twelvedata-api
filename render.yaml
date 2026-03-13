@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: trader-xtb-twelvedata-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: TWELVE_DATA_API_KEY
+        sync: false
+      - key: INTERNAL_BEARER_TOKEN
+        sync: false
